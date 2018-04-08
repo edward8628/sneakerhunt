@@ -1,0 +1,33 @@
+{
+  "name": "shapeapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "ios": "react-native run-ios && npm run log-ios",
+    "android": "ENVFILE=.env react-native run-android && npm run log-android",
+    "avd": "cd ~/Library/Android/sdk/tools && emulator -avd react && cd ..",
+    "log-ios": "react-native log-ios",
+    "log-android": "react-native log-android",
+    "link": "react-native link",
+    "xcode": "open ios/shapeapp.xcodeproj",
+    "clean": "rm -rf node_modules",
+    "clean-android": "cd android && ./gradlew clean && cd -",
+    "rebuild": "rm -rf ios/build && rm -rf android/build && react-native upgrade",
+    "test": "jest"
+  },
+  "dependencies": {
+    "native-base": "^2.4.1",
+    "react": "16.3.1",
+    "react-native": "0.55.1",
+    "react-navigation": "^1.0.0-beta.11"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
