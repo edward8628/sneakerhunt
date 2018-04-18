@@ -1,5 +1,5 @@
 {
-  "name": "shapeapp",
+  "name": "sneakerhunt",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,10 +9,11 @@
     "log-ios": "react-native log-ios",
     "log-android": "react-native log-android",
     "link": "react-native link",
-    "xcode": "open ios/shapeapp.xcodeproj",
+    "xcode": "open ios/sneakerhunt.xcodeproj",
     "clean": "rm -rf node_modules",
     "clean-android": "cd android && ./gradlew clean && cd -",
     "rebuild": "rm -rf ios/build && rm -rf android/build && react-native upgrade",
+    "pod": "cd ios && pod install && cd ..",
     "test": "jest"
   },
   "dependencies": {
