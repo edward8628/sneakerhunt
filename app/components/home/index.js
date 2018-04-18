@@ -21,9 +21,9 @@ class Home extends React.Component {
     AsyncStorage.setItem('session', JSON.stringify(this.session));
   }
 
-  resetSession = (day) => {
+  resetSession = (date) => {
     this.session = {
-      day: day,
+      date: date,
       swiped: [] // not implemented with shift because the order & the number of posts could change
     }
 
@@ -32,48 +32,41 @@ class Home extends React.Component {
 
   async componentDidMount() {
     try {
-      const data = await getItems()//fetch(config.LATEST_ENDPOINT);
-      // const json = await fetched.json();
+      const posts = await getItems()//fetch(config.LATEST_ENDPOINT);
       const session = await AsyncStorage.getItem('session');
       const liked = await AsyncStorage.getItem('liked');
 
-      // if (!json || !json.posts || json.posts.length === 0) {
-      //   throw new Error('No posts');
-      // }
+      if (!posts || posts.length === 0) {
+        throw new Error('No posts');
+      }
 
-      // if (session === null) {
-      //   this.resetSession(json.posts[0].day);
-      // } else {
-      //   this.session = JSON.parse(session);
+      if (session === null) {
+        this.resetSession(posts[0].date);
+      } else {
+        this.session = JSON.parse(session);
 
-      //   if (this.session.day !== json.posts[0].day) { // new day => new session
-      //     this.resetSession(json.posts[0].day);
-      //   }
-      // }
+        if (this.session.date !== posts[0].date) { // new day => new session
+          this.resetSession(posts[0].date);
+        }
+      }
 
-      // if (liked === null) {
-      //   this.liked = {news: [], archived: []};
-      // } else {
-      //   this.liked = JSON.parse(liked);
-      // }
+      if (liked === null) {
+        this.liked = {news: [], archived: []};
+      } else {
+        this.liked = JSON.parse(liked);
+      }
 
       // Expo.Amplitude.logEventWithProperties('Swiper.Load', {
       //   itemNumberCurrent: this.session.swiped.length + 1,
-      //   itemNumberTotal: json.posts.length
-      // });
-
-      // this.setState({
-      //   posts: json.posts.filter(p => this.session.swiped.indexOf(p.id) === -1),
-      //   loading: false,
-      //   itemNumberCurrent: this.session.swiped.length + 1,
-      //   itemNumberTotal: json.posts.length
+      //   itemNumberTotal: posts.length
       // });
 
       this.setState({
-        posts: data,
+        posts: posts.filter(p => this.session.swiped.indexOf(p.id) === -1),
         loading: false,
-      })
-      console.log(data)
+        itemNumberCurrent: this.session.swiped.length + 1,
+        itemNumberTotal: posts.length
+      });
 
     } catch(error) {
       Toast.show({
@@ -114,7 +107,7 @@ class Home extends React.Component {
   }
 
   renderSwiper() {
-    const nextDay = false//(new Date(`${this.session.day}T07:15:00Z`)).getTime() + 24 * 60 * 60 * 1000;
+    const nextDay = (new Date(`${this.session.date}T07:15:00Z`)).getTime() + 24 * 60 * 60 * 1000;
 
     return (
       <Swiper
