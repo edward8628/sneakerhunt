@@ -12,18 +12,16 @@ import {
 
 const ProductCard = ({
   name,
-  screenshot_url,
-  tagline,
+  image,
   thumbnail,
-  topics
+  topics=[]
 }) => (
   <Card style={{elevation: 3}}>
     <CardItem>
       <Left>
-        <Thumb uri={thumbnail.image_url}/>
+        <Thumb uri={thumbnail}/>
         <Body>
           <Text>{name}</Text>
-          <Text note numberOfLines={2}>{tagline}</Text>
         </Body>
       </Left>
     </CardItem>
@@ -35,7 +33,7 @@ const ProductCard = ({
           flex: 1,
           height: 250
         }}
-        source={{uri: screenshot_url['300px']}}
+        source={{uri: image}}
       />
     </CardItem>
     <CardItem style={{flexWrap: 'wrap'}}>

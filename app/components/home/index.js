@@ -5,6 +5,7 @@ import { Toast } from 'native-base';
 import Page from '../page';
 import Swiper from './swiper';
 import config from '../../config';
+import { getItems } from '../../server';
 
 class Home extends React.Component {
   state = {
@@ -31,42 +32,49 @@ class Home extends React.Component {
 
   async componentDidMount() {
     try {
-      const fetched = await fetch(config.LATEST_ENDPOINT);
-      const json = await fetched.json();
+      const data = await getItems()//fetch(config.LATEST_ENDPOINT);
+      // const json = await fetched.json();
       const session = await AsyncStorage.getItem('session');
       const liked = await AsyncStorage.getItem('liked');
 
-      if (!json || !json.posts || json.posts.length === 0) {
-        throw new Error('No posts');
-      }
+      // if (!json || !json.posts || json.posts.length === 0) {
+      //   throw new Error('No posts');
+      // }
 
-      if (session === null) {
-        this.resetSession(json.posts[0].day);
-      } else {
-        this.session = JSON.parse(session);
+      // if (session === null) {
+      //   this.resetSession(json.posts[0].day);
+      // } else {
+      //   this.session = JSON.parse(session);
 
-        if (this.session.day !== json.posts[0].day) { // new day => new session
-          this.resetSession(json.posts[0].day);
-        }
-      }
+      //   if (this.session.day !== json.posts[0].day) { // new day => new session
+      //     this.resetSession(json.posts[0].day);
+      //   }
+      // }
 
-      if (liked === null) {
-        this.liked = {news: [], archived: []};
-      } else {
-        this.liked = JSON.parse(liked);
-      }
+      // if (liked === null) {
+      //   this.liked = {news: [], archived: []};
+      // } else {
+      //   this.liked = JSON.parse(liked);
+      // }
 
       // Expo.Amplitude.logEventWithProperties('Swiper.Load', {
       //   itemNumberCurrent: this.session.swiped.length + 1,
       //   itemNumberTotal: json.posts.length
       // });
 
+      // this.setState({
+      //   posts: json.posts.filter(p => this.session.swiped.indexOf(p.id) === -1),
+      //   loading: false,
+      //   itemNumberCurrent: this.session.swiped.length + 1,
+      //   itemNumberTotal: json.posts.length
+      // });
+
       this.setState({
-        posts: json.posts.filter(p => this.session.swiped.indexOf(p.id) === -1),
+        posts: data,
         loading: false,
-        itemNumberCurrent: this.session.swiped.length + 1,
-        itemNumberTotal: json.posts.length
-      });
+      })
+      console.log(data)
+
     } catch(error) {
       Toast.show({
         text: 'Verify your internet connection and retry',
@@ -106,7 +114,7 @@ class Home extends React.Component {
   }
 
   renderSwiper() {
-    const nextDay = (new Date(`${this.session.day}T07:15:00Z`)).getTime() + 24 * 60 * 60 * 1000;
+    const nextDay = false//(new Date(`${this.session.day}T07:15:00Z`)).getTime() + 24 * 60 * 60 * 1000;
 
     return (
       <Swiper
