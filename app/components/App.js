@@ -1,4 +1,4 @@
-import {DrawerNavigator} from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 import SideBar from './sidebar';
 import Likes from './likes';
 import Home from './home';

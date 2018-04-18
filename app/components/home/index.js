@@ -30,6 +30,7 @@ class Home extends React.Component {
     this.saveSession()
   }
 
+  //todo, loading new image is slow
   async componentDidMount() {
     try {
       const posts = await getItems()//fetch(config.LATEST_ENDPOINT);
@@ -118,12 +119,12 @@ class Home extends React.Component {
         onSwipeRight={this.onSwipeRight}
         nextTime={nextDay}
         onPressLikes={() => {
-          Expo.Amplitude.logEvent('Swiper.LikePress');
-          this.props.navigation.navigate('List');
+          // Expo.Amplitude.logEvent('Swiper.LikePress');
+          this.props.navigation.navigate('Likes');
         }}
         onTimeout={() => {
           /* TODO reload */
-          Expo.Amplitude.logEvent('Swiper.Tiemout');
+          // Expo.Amplitude.logEvent('Swiper.Tiemout');
         }}
         />
     );

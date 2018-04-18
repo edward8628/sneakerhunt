@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 const pad = (str) => (str.length < 2) ? `0${str}` : str;
 
 class Timer extends React.Component {

@@ -10,7 +10,7 @@ const item = ({
 }) => (
   <ListItem thumbnail>
     <Left>
-      <Thumb uri={thumbnail.image_url}/>
+      <Thumb uri={thumbnail}/>
     </Left>
     <Body>
       <Text>{name}</Text>

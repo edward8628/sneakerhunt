@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native';
+import { Image } from 'react-native';
 import Thumb from '../Thumb';
 import {
   Badge,
@@ -51,8 +51,5 @@ const ProductCard = ({
     </CardItem>
   </Card>
 );
-
-
-
 
 export default ProductCard;
