@@ -1,15 +1,15 @@
 import {DrawerNavigator} from 'react-navigation';
 import SideBar from './sidebar';
-import PageList from './list';
-import DeckSwiper from './deckswiper';
+import Likes from './likes';
+import Home from './home';
 
 const DrawerExample = DrawerNavigator(
   {
-    Swiper: {screen: DeckSwiper},
-    List: {screen: PageList},
+    Home: { screen: Home },
+    Likes: { screen: Likes },
   },
   {
-    initialRouteName: 'Swiper',
+    initialRouteName: 'Home',
     contentOptions: {
       activeTintColor: '#e91e63'
     },

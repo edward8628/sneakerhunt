@@ -1,5 +1,5 @@
 import React from 'react';
-import {Thumbnail} from 'native-base';
+import { Thumbnail } from 'native-base';
 
 const Thumb = ({uri}) => {
   let newUri = uri.split('?')[0];

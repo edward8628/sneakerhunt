@@ -1,11 +1,8 @@
 import React from 'react';
-import {DeckSwiper, Button, Text, Footer} from 'native-base';
-import {View, Image} from 'react-native';
-
+import { DeckSwiper, Button, Text, Footer } from 'native-base';
+import { View, Image } from 'react-native';
 import Timer from './timer';
 import ProductCard from './card';
-
-
 const img = require('../../img/drawer-cover.png');
 
 const Empty = ({onTimeout, remaining, onPressLikes}) => (

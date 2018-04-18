@@ -1,6 +1,5 @@
 import React from 'react';
-import {Content, List, Text, Body, Separator} from 'native-base';
-
+import { Content, List, Text, Body, Separator } from 'native-base';
 import Item from './item';
 
 const ProductList = ({news, archived, onView}) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Header, Title, Button, Icon, Left, Right, Body, Spinner} from 'native-base';
+import { Container, Header, Title, Button, Icon, Left, Right, Body, Spinner } from 'native-base';
 
 const Page = ({title, children, navigation, loading}) => (
   <Container style={{backgroundColor: '#fbfafa'}}>
@@ -17,7 +17,6 @@ const Page = ({title, children, navigation, loading}) => (
       </Body>
       <Right />
     </Header>
-
     {loading ? <Spinner style={{marginTop: 20, flex: 1}} color="#da552f" /> : children}
   </Container>
 );

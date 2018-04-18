@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image} from 'react-native';
 import Thumb from '../Thumb';
-
 import {
   Badge,
   Card,

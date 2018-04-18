@@ -1,9 +1,8 @@
 import React from 'react';
-import {Button, ListItem, Text, Left, Body, Right} from 'native-base';
-
+import { Button, ListItem, Text, Left, Body, Right } from 'native-base';
 import Thumb from '../Thumb';
 
-const Item = ({
+const item = ({
   name,
   tagline,
   thumbnail,
@@ -25,4 +24,4 @@ const Item = ({
   </ListItem>
 )
 
-export default Item;
+export default item;

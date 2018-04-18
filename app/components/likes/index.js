@@ -1,11 +1,10 @@
 // import Expo from 'expo';
 import React from 'react';
-import {Linking, AsyncStorage} from 'react-native';
-
+import { Linking, AsyncStorage } from 'react-native';
 import Page from '../page';
-import ProductList from './list';
+import ProductList from './ProductList';
 
-class PageList extends React.Component {
+class Likes extends React.Component {
   state = {
     liked: {
       news: [],
@@ -58,4 +57,4 @@ class PageList extends React.Component {
   }
 }
 
-export default PageList;
+export default Likes;

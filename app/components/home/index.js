@@ -1,12 +1,12 @@
 // import Expo from 'expo';
 import React from 'react';
-import {AsyncStorage} from 'react-native';
-import {Toast} from 'native-base';
-import config from '../../config';
+import { AsyncStorage } from 'react-native';
+import { Toast } from 'native-base';
 import Page from '../page';
 import Swiper from './swiper';
+import config from '../../config';
 
-class PageSwiper extends React.Component {
+class Home extends React.Component {
   state = {
     loading: true,
     posts: [],
@@ -138,4 +138,4 @@ class PageSwiper extends React.Component {
   }
 }
 
-export default PageSwiper;
+export default Home;
